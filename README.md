@@ -50,8 +50,6 @@ https://gorails.com/setup/ubuntu/22.04
 
     ```shell
     wsl --install -d Ubuntu
-    wsl --update
-    wsl --set-default-version 1
     ```
 
   após rodar o comando acima devera reiniciar o pc
@@ -70,9 +68,15 @@ https://gorails.com/setup/ubuntu/22.04
 ```sh
 sudo apt-get update
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+sudo apt install -y build-essential tklib zlib1g-dev libssl-dev libffi-dev libxml2 libxml2-dev libxslt1-dev libreadline-dev
+exec $SHELL 
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 exec $SHELL
-sudo apt install postgresql libpq-dev
-sudo service postgresql start
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
 ```
  
  instalando o ruby:
@@ -107,9 +111,11 @@ rbenv global 3.0.3
  install psql:
  ```sh
  sudo apt update
- sudo apt install libpq-dev build-essential
- sudo apt-get -y install postgresql
+ sudo apt install postgresql postgresql-contrib libpq-dev -y
+ sudo service postgresql restart
+ sudo service postgresql status
  sudo service postgresql start
+ sudo -u postgres psql
  sudo passwd postgres
  ```
  altere a senha do psql:
