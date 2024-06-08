@@ -1,17 +1,19 @@
 <h1>Lista de Produtos</h1>
 <div class="produtos-container">
   <% @produtos.each do |produto| %>
-    <div class="produto">
-      <h2><%= link_to produto.nome, produto_path(produto) %></h2>
-      <div class="produto-imagem">
-         <%= image_tag(produto.imagem) %>
+    <% if produto.nome.present? %>
+      <div class="produto">
+        <h2><%= link_to produto.nome, produto_path(produto) %></h2>
+        <div class="produto-imagem">
+           <%= image_tag(produto.imagem) %>
+        </div>
+        <p>Preço: <%= number_to_currency(produto.preco) %></p>
+        <p>Origem: <%= produto.origem %></p>
+        <p>Data de Validade: <%= produto.validade %></p>
+        <p>Data de Fabricação: <%= produto.fabricado_em %></p>
+        <p>Tipo de Azeitona: <%= produto.tipo %></p>
+        <%= link_to (fa_icon 'clipboard'), produto_path(produto), class: 'fa-2x' %>
       </div>
-      <p>Preço: <%= number_to_currency(produto.preco) %></p>
-      <p>Origem: <%= produto.origem %></p>
-      <p>Data de Validade: <%= produto.validade %></p>
-      <p>Data de Fabricação: <%= produto.fabricado_em %></p>
-      <p>Tipo de Azeitona: <%= produto.tipo %></p>
-      <%= link_to 'Adicionar ao Carrinho', produto_path(produto)  %>
-    </div>
+    <% end %>
   <% end %>
 </div>
