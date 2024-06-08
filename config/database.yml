@@ -1,23 +1,23 @@
 production:
   adapter: postgresql
-  username: pablo_almeida 
-  password: admin 
+  username: postgres 
+  password: postgres 
   database: azeitanaro_production
   host: localhost
   port: 5432
 
 development:
   adapter: postgresql
-  username: pablo_almeida 
-  password: admin 
+  username: postgres 
+  password: postgres 
   database: azeitanaro_development
   host: localhost
   port: 5432
 
 test:
   adapter: postgresql
-  username: pablo_almeida 
-  password: admin 
+  username: postgres 
+  password: postgres 
   database: azeitanaro_test
   host: localhost
   port: 5432
