@@ -42,7 +42,7 @@ rails s
 
 <details>
 
-### Instalando o projeto Windows com WLS UBUNTU:
+### Para Windows com WSL UBUNTU:
 <details>
 https://gorails.com/setup/ubuntu/22.04
   Instalar o Ubuntu windows:
@@ -61,10 +61,24 @@ https://gorails.com/setup/ubuntu/22.04
   ```
   e coloque um username para a maquina ubunto e senha.
   
+ autere a senha do usuario root:
+ ```shell
+ sudo -i
+ passwd
+ chmod 777 /
+ ```
 
- 
- instalando as dependencias
- abra o terminal do UBUNTU e execute:
+</details>
+
+### Instalando o projeto no Linux ou WSL:
+Instalar o git:
+```sh
+sudo apt-get update
+sudo apt install git
+sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+```
+
+Instalar o rbenv:
 ```sh
 sudo apt-get update
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
@@ -77,114 +91,7 @@ exec $SHELL
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
-```
- 
- instalando o ruby:
- ```sh
-rbenv install 3.0.3
-ruby -v
-rbenv global 3.0.3
- ```
-
- clone o projeto no terminal do ubunto:
- ```sh
- git clone link-do-projeto-no-git
- 
- #va até a pasta do projeto.
- cd Azeitanaro/
- ```
-
- dentro do projeto execute o bundle install
- ```sh
- bundle install
- ```
- após isso tera o projeto instalado basta configurar o super usuario do Ubunto e alterar a senha do Usuario Postgres
- para criar o banco de dados
- 
- autere a senha do usuario root:
- ```shell
- sudo -i
- passwd
- chmod 777 /
- ```
-
- install psql:
- ```sh
- sudo apt update
- sudo apt install postgresql postgresql-contrib libpq-dev -y
- sudo service postgresql restart
- sudo service postgresql status
- sudo service postgresql start
- sudo -u postgres psql
- sudo passwd postgres
- ```
- altere a senha do psql:
- ```sh
- su postgres
- psql
- ```
- dentro do postgres=# execute o comando para mudar a senha do banco de dados:
- ```sh
- \password
- ```
-
- após essa etapa voce tera o projeto configurado basta abrir o arquive dentro 
- de config/database.yml
- e altere a senha do banco tanto no development, production, test
-
- ex:
- ```sh
- production:
-  adapter: postgresql
-  username: postgres 
-  password: postgres 
-  database: azeitanaro_production
-  host: localhost
-  port: 5432
-
-development:
-  adapter: postgresql
-  username: postgres 
-  password: postgres 
-  database: azeitanaro_development
-  host: localhost
-  port: 5432
-
-test:
-  adapter: postgresql
-  username: postgres 
-  password: postgres 
-  database: azeitanaro_test
-  host: localhost
-  port: 5432
- ```
-
- basta executar o start do projeto e acessar o localhost:3000:
-
- ```sh
- rails db:create
- postgres start
- ```
-
-</details>
-
-### Instalando o projeto no Linux:
-Instalar o git:
-```sh
-sudo apt-get update
-sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
-```
-
-Instalar o rbenv:
-```sh
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-exec $SHELL
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-exec $SHELL
-rbenv version
+rbenv -v
 ```
 
 Instalar o Ruby:
@@ -197,7 +104,6 @@ rbenv global 3.0.3
 Instalar bundler gem (gerenciador de dependências):
 ```sh
 gem install bundler
-rbenv rehash
 ```
 
 Configurando Git:
@@ -222,39 +128,66 @@ rails -v
 
 Instalando o PostgreSQL:
 ```sh
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install postgresql-common
-sudo apt-get install postgresql-9.5 libpq-dev
-```
-
-Configurando usuário para PostgreSQL (Substitua `usuario` no comando abaixo pelo nome do usuario que você deseja criar):
-```sh
-sudo -u postgres createuser usuario
+sudo apt install postgresql-14 libpq-dev
 ```
 
 instalando o node.js:
-```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
-source ~/.bashrc
-nvm install 4.4.7
+```sh
+sudo apt install nodejs
 ```
 
-Criando primeiro projeto Rails:
-```sh
-mkdir rails
-cd rails
-rails new app
-cd app
-```
 
-Rodando o projeto Rails:
-```sh
-bundle exec rails db:crate
-bundle exec rails db:migrate
-rails s
-```
+ altere a senha do usuario postgres:
+ ```sh
+ sudo passwd postgres
+ ```
+ ```sh
+ su postgres
+ psql
+ ```
+ dentro do postgres=# execute o comando para mudar a senha do banco de dados:
+ ```sh
+ \password postgres
+ ```
+
+ após essa etapa voce tera o projeto configurado basta abrir o arquive dentro 
+ de config/database.yml
+ e altere a senha do banco tanto no development, production, test
+
+ ex:
+ ```sh
+ production:
+  adapter: postgresql
+  username: postgres
+  password: postgres
+  database: azeitanaro_production
+  host: localhost
+  port: 5432
+
+development:
+  adapter: postgresql
+  username: postgres
+  password: postgres
+  database: azeitanaro_development
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  username: postgres
+  password: postgres
+  database: azeitanaro_test
+  host: localhost
+  port: 5432
+ ```
+
+ basta executar o start do projeto e acessar o localhost:3000:
+
+ ```sh
+ rails db:create
+ postgres start
+ ```
 
 Abra seu browser e vá para o endereço `localhost:3000`
 
