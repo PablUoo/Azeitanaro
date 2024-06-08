@@ -44,6 +44,7 @@ rails s
 
 ### Instalando o projeto Windows com WLS UBUNTU:
 <details>
+https://gorails.com/setup/ubuntu/22.04
   Instalar o Ubuntu windows:
   abra o terminal power_shell como adiministrador:
 
