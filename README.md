@@ -134,7 +134,3 @@ Abra seu browser e vá para o endereço `localhost:3000`
 
 </details>
 
-
-
-
-Curso (https://www.udemy.com/ruby-on-rails-5-na-pratica)
