@@ -1,0 +1,40 @@
+
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .produto {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(33.333% - 40px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  
+  .produto:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .produto-imagem {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .produto-imagem img {
+    max-width: 50%;
+    height: auto;
+  }
+  
+  .produto h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .produto p {
+    margin: 5px 0;
+  }
+  

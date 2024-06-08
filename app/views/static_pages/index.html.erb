@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1>Azeitanaro</h1>
+  <p>
+    Compre seu azeite aqui e agora!
+  </p>
+  <p>
+    <% if user_signed_in?%>
+      <%= link_to 'Visitar Loja', produtos_path, class: 'btn btn-primary btn-lg' %>
+    <% else %>
+      <%= link_to 'Visitar Loja', produtos_path, class: 'btn btn-primary btn-lg' %>
+      <%= link_to 'Crie Sua Conta', cadastro_path, class: 'btn btn-primary btn-lg' %>
+    <% end %>
+  </p>
+</div>
