@@ -1,4 +1,4 @@
-# Azeitanaro
+# Azeitanaro.
 <p>Link do projeto  https://azeitanaro.fly.dev/</p>
 ### Instruções do projeto
 
