@@ -183,9 +183,9 @@ rbenv version
 
 Instalar o Ruby:
 ```sh
-rbenv install 2.6.1
+rbenv install 3.0.3
 ruby -v
-rbenv global 2.6.1
+rbenv global 3.0.3
 ```
 
 Instalar bundler gem (gerenciador de dependências):
@@ -210,7 +210,7 @@ ssh -T git@github.com
 
 Instalando o Rails:
 ```sh
-gem install rails -v 5.2.2
+gem install rails -v 6.1.4.7
 rails -v
 ```
 
