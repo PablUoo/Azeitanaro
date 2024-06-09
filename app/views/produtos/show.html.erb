@@ -1,3 +1,22 @@
-<h1>Produto</h1>
 
-<%=raise%>
+  <div class="produto-card">
+    <div class="produto-card-imagem">
+      <%= image_tag(@produtos.imagem, class:"produto-card-imagem-tag") %>
+    </div>
+    <div class="produto-card-descricao">
+      <h2><%= @produtos.nome %></h2>
+      <p>Preço: <%= number_to_currency(@produtos.preco) %></p>
+      <p>Origem: <%= @produtos.origem %></p>
+      <p>Data de Validade: <%= @produtos.validade %></p>
+      <p>Data de Fabricação: <%= @produtos.fabricado_em %></p>
+      <p>Tipo de Azeitona: <%= @produtos.tipo %></p>
+      <%= form_with url: user_carrinho_add_path(@produtos), method: :post, local: true do |f| %>
+        <%= f.label :quantidade, 'Quantidade:' %>
+        <%= f.number_field :quantidade, value: 1, min: 1 %>
+        <div class="produto-card-botoes">
+            <%= f.submit 'Adicionar ao Carrinho', class: 'btn btn-warning btn-lg btn-block', id:'produto-adicionar' %>
+            <%= button_to 'Comprar', user_carrinho_comprar_path(f), method: :post, class: 'btn btn-info btn-lg btn-block', id:'produto-comprar' %>
+          <% end %>
+        </div>
+    </div>
+  </div>

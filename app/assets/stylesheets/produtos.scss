@@ -13,6 +13,7 @@
     width: calc(33.333% - 40px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: box-shadow 0.250s;
+    background-color: #fff;
   }
   
   .produto:hover {
@@ -37,3 +38,51 @@
   .produto p {
     margin: 5px 0;
   }
+  
+// show
+.produto-card {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: fit-content;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  height: 1000px;
+  
+  .produto-card-imagem{
+    display: flex;
+    justify-content: center;
+      padding: 10px 50px;
+      width: 700px;
+      height: 500px;
+      transition: transform 0.3s ease;
+      .produto-card-imagem-tag{
+        &:hover{
+          transform: scale(1.2);
+        }
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .produto-card-descricao {
+      margin: 0 auto;
+    padding: 0px 20px 0px;
+    border: 0.5px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+
+      .produto-card-botoes {
+        flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      border: 0.1px #ddd;
+      border-radius: 5px;
+      box-shadow: 0 4px 25px rgba(87, 101, 104, 0.3);
+    }
+  }
+}
