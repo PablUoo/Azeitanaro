@@ -7,12 +7,13 @@
         <div class="produto-imagem">
            <%= image_tag(produto.imagem) %>
         </div>
+      <hr class="my-4">
+
         <p>Preço: <%= number_to_currency(produto.preco) %></p>
         <p>Origem: <%= produto.origem %></p>
         <p>Data de Validade: <%= produto.validade %></p>
         <p>Data de Fabricação: <%= produto.fabricado_em %></p>
         <p>Tipo de Azeitona: <%= produto.tipo %></p>
-        # <%= link_to (fa_icon 'clipboard'), produto_path(produto), class: 'fa-2x' %>
       </div>
     <% end %>
   <% end %>
