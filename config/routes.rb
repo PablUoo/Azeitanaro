@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :edit, :update] do
     resources :sessions, only: [:new, :create, :destroy]
-    post 'carrinho/add/:id', to: 'carrinho#add', as: 'carrinho_add'
-    post 'carrinho/comprar/:id', to: 'carrinho#comprar', as: 'carrinho_comprar'
-  end
-  resources :produtos, only: [:index, :show]
+    end
+    resources :produtos, only: [:index, :show]
+    post 'carrinho/adicionar/:id_produto', to: 'produtos#adicionar_ao_carrinho', as: 'carrinho_add'
+    post 'carrinho/comprar/:id_produto', to: 'produtos#comprar', as: 'carrinho_comprar'
 end

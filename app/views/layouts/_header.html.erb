@@ -1,58 +1,25 @@
 <nav class="azeitanaro_navbar navbar navbar-static-top">
-
   <div class="container-fluid">
-    
-      <%= link_to (image_tag 'logo_sem_fundo.svg', alt: "Logo da empresa", class: "navbar-logo navbar-brand", id: "navbar-logo"), root_url %>
+<div class="logo_empresa">
+  <div class="logo_empresa_fundo"></div>
+  <div><%= link_to (image_tag 'logo_fundo.svg', alt: "Logo da empresa", id: "navbar-logo"), root_url %></div>
+  <% if user_signed_in? %>
+    <div class="usuario-nome">Bem vindo, <%= current_user.name %></div>
+  <%end%>
+</div>
+<div class="navbar-header">
+  <ul class="nav navbar-nav">
+    <li><%= link_to cadastro_path, title: "Nova Conta" do %><i class="fas fa-user-plus fa-lg"></i><% end  if !user_signed_in?%></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to produtos_path, title: "Loja" do %><i class="fas fa-store fa-lg"></i><% end %></li>
+    <li><%= link_to entrar_path, title: "Entrar" do %><i class="fas fa-sign-in-alt fa-lg"></i><% end  if !user_signed_in?%></li>
+    <li><%= link_to root_path(current_user), title: "Pedidos" do %><i class="fas fa-shopping-bag fa-lg"></i><% end  if user_signed_in?%></li>
+    <li><%= link_to root_path(current_user), title: "Carrinho" do %><i class="fas fa-shopping-cart fa-lg"></i><% end if user_signed_in?%></li>
+    <li><%= link_to edit_user_path(current_user), title: "Editar" do %><i class="fas fa-edit fa-lg"></i><% end if user_signed_in?%></li>
+    <li><%= link_to sair_path, method: :delete, title: "Sair" do %><i class="fas fa-sign-out-alt fa-lg"></i><% end if user_signed_in?%></li>
+  </ul>
+</div>
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#expanded-menu" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="expanded-menu">
-      <ul class="nav navbar-nav">
-        <% if !user_signed_in? %>
-          <li class="active">
-            <%= link_to 'Nova Conta', cadastro_path %>
-          </li>
-        <% end %>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if !user_signed_in? %>
-          <li>
-            <%= link_to 'Entrar', entrar_path %>
-          </li>
-        <% else %>
-          <li class="dropdown">
-            <a href="#" id="dropdownmenuheader" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Bem vindo, <%= current_user.name %> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to 'Loja', produtos_path %>
-              </li>
-              <li>
-                <%= link_to 'Pedidos', root_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to 'Carrinho', root_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to 'Editar', edit_user_path(current_user) %>
-              </li>
-              <li class="divider" role="separator"></li>
-              <li>
-                <%= link_to 'Sair', sair_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    </div>
   </div>
 </nav>
