@@ -1,16 +1,11 @@
-<footer>
+<footer class="footer">
   <small>
-    <%= link_to 'Azeitanaro. Todos os direitos reservados.', root_path %>
+    <%= link_to "© Azeitanaro. Todos os direitos reservados #{Time.now.year}.", root_path %>
   </small>
 
-  <nav>
-    <ul>
-      <li>
-        <%= link_to 'Sobre', sobre_path %>
-      </li>
-      <li>
-        <%= link_to 'Equipe', equipe_path %>
-      </li>
-    </ul>
-  </nav>
+  <ul>
+    <li><%= link_to 'Sobre', sobre_path %></li>
+    <li><%= link_to 'Equipe', equipe_path %></li>
+  </ul>
+
 </footer>
