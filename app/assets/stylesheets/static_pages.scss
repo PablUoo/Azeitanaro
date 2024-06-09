@@ -78,3 +78,16 @@ body {
     }
   }
 }
+  .site-shopping-info {
+    display: flex;
+    padding: 5rem;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  .info-slide {
+    width: 100%;
+    flex: 1 0 33.3333%;
+  }
+

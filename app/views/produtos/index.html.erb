@@ -2,13 +2,14 @@
 <div class="produtos-container">
   <% @produtos.each do |produto| %>
     <% if produto.nome.present? %>
-      <div class="produto">
-        <h2><%= link_to produto.nome, produto_path(produto) %></h2>
-        <div class="produto-imagem">
+    <%= link_to produto_path(produto) do %>
+      <div class="produtos-card">
+        <div class="produtos-card-imagem">
            <%= image_tag(produto.imagem) %>
         </div>
-      <hr class="my-4">
+        <hr class="my-4">
 
+        <%end%>
         <p>Preço: <%= number_to_currency(produto.preco) %></p>
         <p>Origem: <%= produto.origem %></p>
         <p>Data de Validade: <%= produto.validade %></p>
