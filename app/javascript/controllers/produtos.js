@@ -11,10 +11,8 @@ $(document).ready(function() {
         url: `/carrinho/adicionar/${produtoId}`,
         data: { id_produto: produtoId, quantidade: quantidade },
         success: function(data) {
-          // fazer algo com a resposta
         },
         error: function(xhr, status, error) {
-          // lidar com o erro
         }
       });
     });
@@ -28,10 +26,8 @@ $(document).ready(function() {
         url: `/carrinho/comprar/${produtoId}`,
         data: { id_produto: produtoId, quantidade: quantidade },
         success: function(data) {
-          // fazer algo com a resposta
         },
         error: function(xhr, status, error) {
-          // lidar com o erro
         }
       });
     });

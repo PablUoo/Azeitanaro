@@ -2,23 +2,25 @@
 .produtos-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: flex-start;
-    height: 980px;
+    height:100%;
     width: 100%;
   }
-  
   .produtos-card {
     height: 401px;
-    width: 100%;
+    width: 21rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-    // padding: 10px;
-    width: calc(33.333% - 40px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: box-shadow 0.250s;
     background-color: #fff;
+    margin: 5px;
+  }
+  .produtos-card-divisor{
     margin: 0;
+  }
+  .produtos-card-descricao{
+    padding: 2px 3px 2px;
   }
   
   .produtos-card:hover {

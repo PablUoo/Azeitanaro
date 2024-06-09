@@ -1,21 +1,32 @@
 <h3>Lista de Produtos</h3>
-<div class="produtos-container">
-  <% @produtos.each do |produto| %>
-    <% if produto.nome.present? %>
-    <%= link_to produto_path(produto) do %>
-      <div class="produtos-card">
-        <div class="produtos-card-imagem">
-           <%= image_tag(produto.imagem) %>
-        </div>
-        <hr class="my-4">
+<div class="lista-container">
+  <div class="produtos-container">
+    <% if @produtos.present? %>
+    <% @produtos.each do |produto| %>
+      <% if produto.nome.present? %>
+      <%= link_to produto_path(produto) do %>
+        <div class="produtos-card">
+          <div class="produtos-card-imagem">
+             <%= image_tag(produto.imagem) %>
+          </div>
+          <hr class="produtos-card-divisor">
 
-        <%end%>
-        <p>Preço: <%= number_to_currency(produto.preco) %></p>
-        <p>Origem: <%= produto.origem %></p>
-        <p>Data de Validade: <%= produto.validade %></p>
-        <p>Data de Fabricação: <%= produto.fabricado_em %></p>
-        <p>Tipo de Azeitona: <%= produto.tipo %></p>
+          <%end%>
+          <div class="produtos-card-descricao">
+          <p><small><del>R$ <%= number_to_currency(produto.desconto)%></del></small></p>
+          <p class="mb-0"><h4><strong>R$ <%= number_to_currency(produto.preco) %></strong></h4></p>
+          <p><%= produto.nome %></p>
+          <p>Origem: <%= produto.origem %></p>
+          <p>Tipo de Azeitona: <%= produto.tipo %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% else %>
+      <div class="jumbotron" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <h1>Estoque Vasio</h1>
+        <ul style="margin-top: 0;">Volte outra hora!</ul>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

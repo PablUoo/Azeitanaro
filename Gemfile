@@ -13,6 +13,7 @@ gem 'font-awesome-sass'
 gem 'font_awesome5_rails'
 gem 'bootsnap'
 gem 'passenger'
+gem 'open-uri'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
