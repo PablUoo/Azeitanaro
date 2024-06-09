@@ -9,9 +9,18 @@ header {
 }
 
 .navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid black;
+  background-color: white;
   padding: 1rem 2rem;
+  box-shadow: 0px 0px 15px #112017;
+  padding-bottom: 2rem;
+  margin-bottom: 7rem;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-header {
@@ -19,34 +28,37 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 100%;
-}
-
-.header-logo {
-  height: 100%;
-  display: flex;
-  margin-right: 20rem;
-  align-items: center;
-  justify-content: space-between;
+  width: 20%;
 }
 
 #navbar-logo {
-  width: 150px;
+  width: 15%;
   height: auto;
+  min-width: 2rem;
 }
 
-#logoname {
-  color: black;
-  font-size: 5rem;
+.navbar-collapse {
+  display: flex !important;
 }
 
-#dropdownmenu {
+#dropdownmenuheader {
   color: black;
-  font-size: 3rem;
-  background-color: white;
+  padding: 1.5rem;
+  font-size: 2rem;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px black;
+  transition: 0.5s;
   &:hover {
-    background-color: #a3a3a3;
+    background-color: #f4fff3;
+    color: black;
+    box-shadow: 0px 0px 5px black;
   }
+}
+
+.dropdown-menu {
+  background-color: whitesmoke;
+  width: 30rem;
+  font-size: 1.5rem;
 }
 
 body {
@@ -58,7 +70,7 @@ body {
 
 .footer {
   margin-top: auto;
-  padding: 3rem;
+  padding: 5rem;
   background-color: #283E30;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
