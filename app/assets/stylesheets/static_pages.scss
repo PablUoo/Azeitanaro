@@ -47,10 +47,17 @@ $gray-medium-light: #EAEAEA;
 .navbutton {
   display: flex;
   flex-wrap: wrap-reverse;
-  color: beige;
+  color: white;
   align-items: center;
   justify-content: center;
 }
+
+#navbuttonh:hover {
+  background-color: rgb(0, 58, 24);
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
 
 body {
   min-height: 100vh;
@@ -92,11 +99,14 @@ body {
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   
-  a {
+  .about, .team, .copyright {
     font-size: 2rem;
     color: white;
+    padding: 2rem;
+    border-radius: 3px;
+    transition: 0.3s background-color ease-in;
     &:hover{
-      color: $gray-darker;
+      background-color: #304c3a;
     }
   }
   small {
