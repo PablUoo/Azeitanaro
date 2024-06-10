@@ -1,3 +1,4 @@
+
 <div class="new-user">
   <div class="acc-forms">
     <div class="form-label">
@@ -7,6 +8,7 @@
 
     <div class="form-inputs">
       <%= form_for :session, url: entrar_path, method: :post do |f| %>
+
 
         <div class="form-group">
           <%= f.label :email %>
@@ -19,6 +21,7 @@
         </div>
 
         <%= f.submit 'Entrar', class: 'btn btn-primary submit-button' %>
+
 
       <% end %>
     </div>
