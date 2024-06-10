@@ -1,20 +1,24 @@
+<div class="container">
+  <%= link_to produtos_path, class: "text-decoration-none text-primary mb-3" do %>
+    <i class="fas fa-arrow-left"></i> Voltar
+  <% end %>
+
 <div class="produto-card">
   <div class="produto-card-imagem">
     <%= image_tag(@produtos.imagem, class: "produto-card-imagem-tag") %>
   </div>
   <div class="produto-card-descricao">
     <h2><%= @produtos.nome %></h2>
-    <p>Preço: <%= number_to_currency(@produtos.preco) %></p>
-    <p>Origem: <%= @produtos.origem %></p>
-    <p>Data de Validade: <%= @produtos.validade %></p>
-    <p>Data de Fabricação: <%= @produtos.fabricado_em %></p>
-    <p>Tipo de Azeitona: <%= @produtos.tipo %></p>
+          <p><small><del>R$ <%= number_to_currency(@produtos.desconto)%></del></small></p>
+          <p class="mb-0"><h4><strong>R$ <%= number_to_currency(@produtos.preco) %></strong></h4></p>
+          <p class="text-secondary">Origem: <%= @produtos.origem %></p>
+          <p class="text-secondary">Data de Validade: <%= @produtos.validade.strftime('%d/%m/%Y') %></p>
+          <p class="text-secondary">Data de Fabricação: <%= @produtos.fabricado_em.strftime('%d/%m/%Y') %></p>
+          <p class="text-secondary">Tipo: <%= @produtos.tipo %></p>
     
+    <hr>
     <div class="produto-card-botoes">
       <button class="btn btn-warning btn-lg btn-block produto-adicionar" data-produto-id="<%= @produtos.id %>">Adicionar ao Carrinho</button>
-    </div>
-    
-    <div class="produto-card-botoes">
       <button class="btn btn-info btn-lg btn-block produto-comprar" data-produto-id="<%= @produtos.id %>">Comprar</button>
     </div>
   </div>

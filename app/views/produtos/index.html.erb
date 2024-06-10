@@ -15,9 +15,9 @@
           <div class="produtos-card-descricao">
           <p><small><del>R$ <%= number_to_currency(produto.desconto)%></del></small></p>
           <p class="mb-0"><h4><strong>R$ <%= number_to_currency(produto.preco) %></strong></h4></p>
-          <p><%= produto.nome %></p>
-          <p>Origem: <%= produto.origem %></p>
-          <p>Tipo de Azeitona: <%= produto.tipo %></p>
+          <p class="text-primary"><%= produto.nome %></p>
+          <p class="text-secondary">Origem: <%= produto.origem %></p>
+          <p class="text-secondary">Tipo: <%= produto.tipo %></p>
           </div>
         </div>
       <% end %>

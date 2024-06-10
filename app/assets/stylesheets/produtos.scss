@@ -47,46 +47,65 @@
   }
 //===============================
 // show
+
 .produto-card {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: fit-content;
+  display: grid;
+  grid-template-columns: 2.375fr 1.625fr;
+  margin: 10px;
+  max-width: 100%;
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 3px;
   background-color: #fff;
-  height: 1000px;
-  
-  .produto-card-imagem{
-    display: flex;
-    justify-content: center;
-      padding: 10px 50px;
-      width: 700px;
-      height: 500px;
-      transition: transform 0.3s ease;
-      .produto-card-imagem-tag{
-        max-height: 100%;
-        max-width: 100%;
-      }
-    }
+}
 
-    .produto-card-descricao {
-      margin: 0 auto;
-    padding: 0px 20px 0px;
-    border: 0.5px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+.produto-card-imagem {
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
 
-      .produto-card-botoes {
-        flex: 0 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 10px;
-      border: 0.1px #ddd;
-      border-radius: 5px;
-      box-shadow: 0 4px 25px rgba(87, 101, 104, 0.3);
-    }
+.produto-card-imagem-tag {
+  max-width: 100%;
+  max-height: 661px;
+}
+
+.produto-card-descricao {
+  grid-area: 1 / 2 / 2 / 3; 
+  margin: 10px 0;
+  padding: 20px;
+  border: 0.5px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 80%;
+  justify-self: end;
+}
+
+.produto-card-botoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border: 0.1px #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 25px rgba(87, 101, 104, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .produto-card {
+    grid-template-columns: 1fr; /* Alterando para uma coluna quando a largura da tela for menor que 768px */
+    grid-template-rows: auto auto;
+  }
+
+  .produto-card-descricao {
+    grid-area: auto;
+    width: 100%; 
+    justify-self: start;
   }
 }
