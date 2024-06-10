@@ -1,9 +1,10 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Entrar</h1>
+<div class="acc-forms">
+  <div class="form-label">
+    <%= image_tag 'user-solid.svg', size:"50x50" %>
+    <h1>Login</h1>
   </div>
 
-  <div class="col-md-6 col-md-offset-3 col-xs-12">
+  <div class="form-inputs">
     <%= form_for :session, url: entrar_path, method: :post do |f| %>
 
       <div class="form-group">
@@ -16,7 +17,7 @@
         <%= f.password_field :password, placeholder: 'Senha', class: 'form-control' %>
       </div>
 
-      <%= f.submit 'Entrar', class: 'btn btn-primary' %>
+      <%= f.submit 'Entrar', class: 'btn btn-primary submit-button' %>
 
     <% end %>
   </div>

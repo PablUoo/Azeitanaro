@@ -6,16 +6,21 @@
   <p>
       <hr class="my-4">
     <% if user_signed_in?%>
-      <%= link_to produtos_path, class: 'btn btn-light btn-lg' do %>
-      <%= image_tag("shopify.svg", size: '100x100') %>
+      <%= link_to produtos_path, class: 'btn btn-light btn-lg gotoshopbutton' do %>
+      <%= image_tag("shopify.svg", size: '70x70') %>
       <span>Ir Para Loja</span>
     <% end %>
     <% else %>
-      <%= link_to produtos_path, class: 'btn btn-secundary' do %>
-      <%= image_tag("shopify.svg", size: '100x100') %>
+      <%= link_to produtos_path, class: 'btn btn-secundary gotoshopbutton' do %>
+      <%= image_tag("shopify.svg", size: '70x70') %>
       <span>Ir Para Loja</span>
     <% end %>
-      <%= link_to 'Crie Sua Conta', cadastro_path, class: 'btn btn-secundary btn-lg' %>
+
+      <%= link_to cadastro_path, class: 'btn btn-secundary btn-lg create-acc-button' do %>
+        <%= image_tag('user-solid.svg', size: '70x70')%>
+        <span>Crie Sua Conta</span>
+      <% end %>
+
     <% end %>
   </p>
 </div>
