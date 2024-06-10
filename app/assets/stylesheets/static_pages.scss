@@ -14,7 +14,6 @@ $gray-medium-light: #EAEAEA;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .navbar-header {
@@ -25,24 +24,32 @@ $gray-medium-light: #EAEAEA;
   width: 20%;
 }
 
-.logo_empresa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.logo-empresa {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
 }
 
 #navbar-logo {
-  width: 15%;
+  box-sizing: border-box;
+  width: 10%;
   height: auto;
   min-width: 2rem;
+  margin-right: 20px;
 }
 
 .usuario-nome {
   color: beige;
-  width: 100%;
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.navbutton {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap-reverse;
+  color: beige;
   align-items: center;
+  justify-content: center;
 }
 
 body {
@@ -50,6 +57,32 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+}
+
+.gotoshopbutton span {
+  background-color: #A1C181;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 2rem;
+  color: black;
+  transition: 1s;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.create-acc-button span {
+  background-color: #698996;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 2rem;
+  color: black;
+  transition: 1s;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
 }
 
 .footer {
