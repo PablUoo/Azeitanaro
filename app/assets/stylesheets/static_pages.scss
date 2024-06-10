@@ -1,15 +1,6 @@
 @import 'variables';
 $gray-medium-light: #EAEAEA;
 
-@keyframes leftIn {
-  0% {
-    transform: translateX(-50px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .navbar {
   background-color: rgb(0, 71, 30);
   padding: 1rem 2rem;
@@ -37,7 +28,6 @@ $gray-medium-light: #EAEAEA;
   width: 100%;
   height: auto;
   padding: 1rem;
-  animation: leftIn 1s 1;
 }
 
 #navbar-logo {
@@ -60,7 +50,6 @@ $gray-medium-light: #EAEAEA;
   color: white;
   align-items: center;
   justify-content: center;
-  animation: leftIn 1s 1;
 }
 
 #navbuttonh:hover {
