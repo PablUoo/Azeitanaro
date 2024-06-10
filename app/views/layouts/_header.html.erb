@@ -1,25 +1,25 @@
 <nav class="azeitanaro_navbar navbar navbar-static-top">
   <div class="container-fluid">
-<div class="logo_empresa">
-  <div class="logo_empresa_fundo"></div>
-  <div><%= link_to (image_tag 'logo_fundo.svg', alt: "Logo da empresa", id: "navbar-logo"), root_url %></div>
-  <% if user_signed_in? %>
-    <div class="usuario-nome">Bem vindo, <%= current_user.name %></div>
-  <%end%>
-</div>
-<div class="navbar-header">
-  <ul class="nav navbar-nav">
-    <li><%= link_to cadastro_path, title: "Nova Conta" do %><i class="fas fa-user-plus fa-lg"></i><% end  if !user_signed_in?%></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to produtos_path, title: "Loja" do %><i class="fas fa-store fa-lg"></i><% end %></li>
-    <li><%= link_to entrar_path, title: "Entrar" do %><i class="fas fa-sign-in-alt fa-lg"></i><% end  if !user_signed_in?%></li>
-    <li><%= link_to root_path(current_user), title: "Pedidos" do %><i class="fas fa-shopping-bag fa-lg"></i><% end  if user_signed_in?%></li>
-    <li><%= link_to root_path(current_user), title: "Carrinho" do %><i class="fas fa-shopping-cart fa-lg"></i><% end if user_signed_in?%></li>
-    <li><%= link_to edit_user_path(current_user), title: "Editar" do %><i class="fas fa-edit fa-lg"></i><% end if user_signed_in?%></li>
-    <li><%= link_to sair_path, method: :delete, title: "Sair" do %><i class="fas fa-sign-out-alt fa-lg"></i><% end if user_signed_in?%></li>
-  </ul>
-</div>
 
+      <%= link_to root_url, class: "logo-empresa" do %> 
+
+      <%= image_tag 'logo_fundo.svg', alt: "Logo da empresa", id: "navbar-logo" %>
+      <span class="usuario-nome">Bem vindo<%=", " + current_user.name if user_signed_in? %></span>
+
+      <% end %>
+      
+    <div class="navbar-header">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to produtos_path, title: "Loja" do %><i class="fas fa-store fa-lg navbutton"> Loja</i><% end %></li>
+        <li><%= link_to entrar_path, title: "Entrar" do %><i class="fas fa-sign-in-alt fa-lg navbutton"> Entrar</i><% end  if !user_signed_in?%></li>
+        <li>
+          <%= link_to cadastro_path, title: "Nova Conta" do %><i class="fas fa-user-plus fa-lg navbutton"> Cadastrar-se</i><% end if !user_signed_in?%>
+        </li>
+        <li><%= link_to root_path(current_user), title: "Pedidos" do %><i class="fas fa-shopping-bag fa-lg navbutton"> Pedidos</i><% end  if user_signed_in?%></li>
+        <li><%= link_to root_path(current_user), title: "Carrinho" do %><i class="fas fa-shopping-cart fa-lg navbutton"> Carrinho</i><% end if user_signed_in?%></li>
+        <li><%= link_to edit_user_path(current_user), title: "Editar" do %><i class="fas fa-edit fa-lg navbutton"> Editar</i><% end if user_signed_in?%></li>
+        <li><%= link_to sair_path, method: :delete, title: "Sair" do %><i class="fas fa-sign-out-alt fa-lg navbutton"> Sair</i><% end if user_signed_in?%></li>
+      </ul>
+    </div>
   </div>
 </nav>
