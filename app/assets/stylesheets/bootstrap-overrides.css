@@ -1,0 +1,155 @@
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none outside none;
+}
+
+.navbar-nav > li > a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+legend {
+    margin-bottom: 10px;
+}
+
+.input-append .add-on, .input-prepend .add-on {
+    height: 18px;
+}
+
+.table td, .table tbody tr td {
+    vertical-align: middle;
+}
+
+.table input, .table .select2-container, .table textarea, .table .input-append,
+.table .input-prepend, .table .form-group {
+    margin-bottom: 0;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: #D9EDF7;
+}
+
+.table-bordered > tbody > tr > th,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > tfoot > tr > td {
+    border-color: rgb(221, 221, 221);
+}
+
+.navbar-inner {
+    padding: 0 2px;
+}
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+legend + .form-group {
+    margin-top: 0;
+}
+
+.modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.modal-body .col-md-3 {
+    width: 33.33333333%;
+}
+
+.modal-body .col-md-12 {
+    width: 100%;
+}
+
+.modal form {
+    width: auto;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+.btn-inverse {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  *background-color: #222222;
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.btn-inverse.disabled,
+.btn-inverse[disabled] {
+  color: #ffffff;
+  background-color: #222222;
+  *background-color: #151515;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+             box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btn-inverse:active,
+.btn-inverse.active {
+  background-color: #080808 \9;
+}
+
+.btn-inverse.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-default.multiselect {
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    border-width: 3px 1px 1px 1px;
+}
+
+.btn.multiselect {
+    text-align: left;
+}
+
+.btn.multiselect .caret {
+    float: right;
+    margin-top: 8px;
+    margin-right: -4px;
+}
+
+.btn.multiselect-clear-filter {
+    padding: 12px 12px 10px;
+}
+
+.multiselect-container {
+    width: 100%;
+}
+
+table .success .select2-chosen,
+table .warning .select2-chosen,
+table .danger .select2-chosen,
+table .info .select2-chosen,
+.table .success .select2-chosen,
+.table .warning .select2-chosen,
+.table .danger .select2-chosen,
+.table .info .select2-chosen {
+  color: #555;
+}
+
+.label {
+  font-size: 88%;
+}

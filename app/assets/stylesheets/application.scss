@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "static_pages";
@@ -7,6 +8,23 @@
 @import "font_awesome5";
 @import "sessions";
 @import "users";
+// @import "bootswatch/lumen/variables";
+// @import "bootswatch/lumen/bootswatch";
+// @import "bootstrap-overrides";
+// @import "smalot-bootstrap-datetimepicker";
+// @import "bootstrap-multiselect";
+// @import "bootstrap-touchspin";
+// @import "bootstrap-toggle";
+// @import "bootstrap-colorpickersliders";
+// @import "animate-css";
+// @import "c3js-chart";
+// @import "select2";
+// @import "select2-bootstrap";
+// @import "nprogress";
+// @import "nprogress-bootstrap";
+// @import "main";
+// @import "infinite-scroll";
+// @import "tablesort";
 
 body{
     background-color: #e7e7e7;

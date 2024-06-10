@@ -1,28 +1,103 @@
+
 source 'https://rubygems.org'
 
-gem 'rails',                        '~> 6.1.4.7'
-gem 'pg',                           '~> 1.1'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-validate'
+  gem 'rails-assets-jquery-form'
+  gem 'rails-assets-jquery-mask-plugin'
+  gem 'rails-assets-jsbarcode'
+  gem 'rails-assets-chained'
+  gem 'rails-assets-fastclick'
+  gem 'rails-assets-mousetrap'
+  gem 'rails-assets-animate-css'
+  gem 'rails-assets-c3js-chart'
+  gem 'rails-assets-echarts', '5.3.3'
+  gem 'rails-assets-dispatcher'
+  gem 'rails-assets-blueimp-tmpl'
+  gem 'rails-assets-select2', '3.5.4'
+  gem 'rails-assets-smalot-bootstrap-datetimepicker'
+  gem 'rails-assets-bootstrap-toggle'
+  gem 'rails-assets-momentjs'
+end
+
+gem 'rack-cors'
+gem 'sassc-rails'
+gem 'sassc'
+gem 'rails', '~>6.1.4.7'
+gem 'thinreports'
+gem 'pg',      '~> 1.1'
 gem 'sass-rails',                   '~> 5.1'
 gem 'uglifier',                     '>= 1.3.0'
 gem 'coffee-rails',                 '~> 4.2'
-gem 'jquery-rails',                 '4.2.1'
 gem 'turbolinks',                   '~> 5'
+gem 'jquery-rails',                 '4.2.1'
 gem 'bcrypt',                       '~> 3.1.7'
-gem 'bootstrap-sass',               '>= 3.4.1'
+gem 'makara'
+gem 'simple_form'
+gem 'show_for'
+gem 'kaminari'
+gem 'ransack'
+gem 'delocalize'
+gem 'activejob-status'
+gem 'activejob-traffic_control'
+gem 'i18n-js'
+gem 'default_value_for', github: 'FooBarWidget/default_value_for'
+gem 'carrierwave'
+gem 'image_size'
+gem 'image_optimizer'
+gem 'combine_pdf'
+gem 'nokogiri'
+gem 'oj'
+gem 'roo'
+gem 'caxlsx'
+gem 'exception_notification'
+gem 'sidekiq'
+gem 'sidekiq-history'
+gem 'bootstrap-sass'
+gem 'bh'
 gem 'font-awesome-sass'
+gem 'bootswatch-rails'
 gem 'font_awesome5_rails'
-gem 'bootsnap'
-gem 'passenger'
 gem 'open-uri'
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
+gem 'nprogress-rails'
+gem 'jbuilder'
+gem 'dotenv-rails'
+gem 'whenever'
+gem 'rack-mobile-detect', require: 'rack/mobile-detect'
+gem 'lograge'
+gem 'bootsnap', require: false
+gem 'rmodbus'
+gem 'pdf-reader', '~>2.2.1'
+gem 'decimal-js-rails'
+gem 'sprockets', '~>3.7.2'
+gem 'rqrcode'
+gem "typhoeus"
+gem "sidekiq-worker-killer"
+gem 'scenic'
+gem 'jquery-tablesorter' # https://github.com/themilkman/jquery-tablesorter-rails -> https://github.com/Mottie/tablesorter
+gem 'rack-attack'
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'passenger'
+  gem 'annotate'
+  gem 'bullet'
   gem 'listen', '~> 3.0.5'
+  gem 'immigrant'
+  gem 'test-unit'
+  gem 'web-console'
+  gem 'derailed_benchmarks'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'faker'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
