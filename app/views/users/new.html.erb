@@ -1,14 +1,16 @@
-<div class="acc-forms">
-  <div class="form-label">
-    <%= image_tag 'user-solid.svg', size:"50x50" %>
-    <h1>Cadastrar-se</h1>
-  </div>
+<div class="new-user">
+  <div class="acc-forms">
+    <div class="form-label">
+      <%= image_tag 'user-solid.svg', size:"50x50" %>
+      <h1>Cadastrar-se</h1>
+    </div>
 
-  <div class="form-inputs">
-    <%= form_for @user do |f| %>
-      <%= render 'fields', f: f %>
+    <div class="form-inputs">
+      <%= form_for @user do |f| %>
+        <%= render 'fields', f: f %>
 
-      <%= f.submit 'Cadastrar', class: 'btn btn-primary submit-button' %>
-    <% end %>
+        <%= f.submit 'Cadastrar', class: 'btn btn-primary submit-button' %>
+      <% end %>
+    </div>
   </div>
 </div>
