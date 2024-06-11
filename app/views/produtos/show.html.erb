@@ -24,33 +24,45 @@
   </div>
 </div>
 <script>
-      $('.produto-adicionar').click(function() {
-      var produtoId = $(this).data('produto-id');
-      var quantidade = 1;
+  $('.produto-adicionar').click(function() {
+    var produtoId = $(this).data('produto-id');
+    var quantidade = $(this).data('qtd');
 
-      $.ajax({
-        type: 'POST',
-        url: `/carrinho/adicionar/${produtoId}`,
-        data: { id_produto: produtoId, quantidade: quantidade },
-        success: function(data) {
-        },
-        error: function(xhr, status, error) {
-        }
-      });
+    $('body').addClass('disable-clicks-loading');
+    $(this).html('<i class="fas fa-spinner fa-spin"></i> Carregando...');
+    $.ajax({
+      type: 'POST',
+      url: `/carrinho/adicionar/${produtoId}`,
+      data: { quantidade: quantidade },
+      success: function(data) {
+        $.notify({icon: 'fas fa-info-circle', message: 'Adicionado ao carrinho com sucesso!'}, {type: 'success', z_index: 9999});
+            setTimeout(function() {
+              $('body').removeClass('disable-clicks-loading');
+              window.location.href = "/produtos";
+            }, 2000);
+      },
+      error: function(xhr, status, error) {
+        $.notify({icon: 'fas fa-exclamation-triangle', message: "Erro ao adicionar no carrinho"}, {type: 'danger', z_index: 9999});
+          setTimeout(function() {
+              $('body').removeClass('disable-clicks-loading');
+              window.location.href = "/produtos";
+            }, 2000);
+      }
     });
+  });
 
-    $('.produto-comprar').click(function() {
-      var produtoId = $(this).data('produto-id');
-      var quantidade = 1;
+  $('.produto-comprar').click(function() {
+    var produtoId = $(this).data('produto-id');
+    var quantidade = 1;
 
-      $.ajax({
-        type: 'POST',
-        url: `/carrinho/comprar/${produtoId}`,
-        data: { id_produto: produtoId, quantidade: quantidade },
-        success: function(data) {
-        },
-        error: function(xhr, status, error) {
-        }
-      });
+    $.ajax({
+      type: 'POST',
+      url: `/carrinho/comprar/${produtoId}`,
+      data: { quantidade: quantidade },
+      success: function(data) {
+      },
+      error: function(xhr, status, error) {
+      }
     });
+  });
   </script>

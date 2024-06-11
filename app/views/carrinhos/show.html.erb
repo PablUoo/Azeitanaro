@@ -1,0 +1,72 @@
+<div class="container">
+  <h1>Carrinho de Compras</h1>
+  <table class='table table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Descrição</th>
+        <th>Quantidade</th>
+        <th>Valor</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @carrinho.carrinho_items.each do |item| %>
+        <tr>
+          <td><%= image_tag(item.produto.imagem, size: "50x50") %></td>
+          <td><%= item.produto.nome %></td>
+          <td>
+            <%= form_with model: item, url: carrinho_path(item), method: :patch, local: true do |f| %>
+              <%= f.hidden_field :id %>
+              <%= f.number_field :qtd, in: 1..99 %>
+              <%= f.submit "Atualizar" %>
+            <% end %>
+          </td>
+          <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
+          <td>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal<%= item.id %>">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <div class="modal fade" id="confirmationModal<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel<%= item.id %>" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="confirmationModalLabel<%= item.id %>">Confirmar Exclusão</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Você tem certeza que deseja remover este item do carrinho?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="deleteItem" data-url="<%= carrinho_item_path(item) %>">Sim</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-primary' %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#deleteItem').click(function() {
+      var url = $(this).data('url');
+
+      $.ajax({
+        type: 'DELETE',
+        url: url,
+        success: function(data) {
+          location.reload();
+        },
+        error: function(xhr, status, error) {
+          location.reload();
+        }
+      });
+    });
+  });
+</script>

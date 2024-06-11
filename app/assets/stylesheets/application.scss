@@ -22,3 +22,18 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+.disable-clicks-loading {
+    pointer-events: none;
+}
+
+#ice-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 34, 34, 0.5); 
+    z-index: 9999; 
+    display: none;
+  }

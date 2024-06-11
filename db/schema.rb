@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_09_181648) do
+ActiveRecord::Schema.define(version: 2024_06_11_075502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2024_06_09_181648) do
     t.boolean "ativo", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "numero"
     t.index ["user_id"], name: "index_enderecos_on_user_id"
   end
 
@@ -78,6 +79,10 @@ ActiveRecord::Schema.define(version: 2024_06_09_181648) do
     t.boolean "ativo", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "endereco_id"
+    t.bigint "forma_pagamento_id"
+    t.index ["endereco_id"], name: "index_ordems_on_endereco_id"
+    t.index ["forma_pagamento_id"], name: "index_ordems_on_forma_pagamento_id"
     t.index ["user_id"], name: "index_ordems_on_user_id"
   end
 
@@ -110,5 +115,7 @@ ActiveRecord::Schema.define(version: 2024_06_09_181648) do
   add_foreign_key "forma_pagamentos", "users"
   add_foreign_key "ordem_items", "ordems"
   add_foreign_key "ordem_items", "produtos"
+  add_foreign_key "ordems", "enderecos"
+  add_foreign_key "ordems", "forma_pagamentos"
   add_foreign_key "ordems", "users"
 end

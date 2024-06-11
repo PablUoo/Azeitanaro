@@ -1,0 +1,43 @@
+<%= form_with(model: @forma_pagamento, url: formas_pagamentos_path) do |f| %>
+  <div class="form-group">
+    <%= f.label :tipo_pagamento, "Tipo de Pagamento" %>
+    <%= f.select :tipo_pagamento, ["Pix", "Boleto", "Cartão"], {}, class: "form-control", id: "tipo-pagamento-select" %>
+  </div>
+
+  <div class="form-group" id="cartao-info" style="display: none;">
+    <%= f.label :numero_cartao, "Número do Cartão" %>
+    <%= f.text_field :numero_cartao, class: "form-control", autocomplete: "cc-number" %>
+  </div>
+
+  <div class="form-group" id="ccv-info" style="display: none;">
+    <%= f.label :ccv, "CCV" %>
+    <%= f.text_field :ccv, class: "form-control", autocomplete: "cc-csc" %>
+  </div>
+
+  <div class="form-group" id="data-validade-info" style="display: none;">
+    <%= f.label :data_validade, "Data de Validade" %>
+    <%= f.date_select :data_validade, {start_year: Date.today.year, end_year: Date.today.year + 10, order: [:month, :year]}, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+<% end %>
+<script>
+   $(document).ready(function() {
+    var tipoPagamentoSelect = document.querySelector('#tipo-pagamento-select');
+    var cartaoInfo = document.querySelector('#cartao-info');
+    var ccvInfo = document.querySelector('#ccv-info');
+    var dataValidadeInfo = document.querySelector('#data-validade-info');
+
+    tipoPagamentoSelect.addEventListener('change', function() {
+      if (this.value === 'Cartão') {
+        cartaoInfo.style.display = 'block';
+        ccvInfo.style.display = 'block';
+        dataValidadeInfo.style.display = 'block';
+      } else {
+        cartaoInfo.style.display = 'none';
+        ccvInfo.style.display = 'none';
+        dataValidadeInfo.style.display = 'none';
+      }
+    });
+  });
+</script>

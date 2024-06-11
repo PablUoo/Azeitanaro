@@ -1,0 +1,51 @@
+<%= form_with(model: @endereco, url: enderecos_path) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="form-group">
+    <%= f.label :cep, "CEP" %>
+    <%= f.text_field :cep, class: "form-control", id: "endereco_cep" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rua, "Rua" %>
+    <%= f.text_field :rua, class: "form-control", id: "endereco_rua" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :numero, "Número" %>
+    <%= f.text_field :numero, class: "form-control", id: "endereco_numero" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cidade, "Cidade" %>
+    <%= f.text_field :cidade, class: "form-control", id: "endereco_cidade" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :estado, "Estado" %>
+    <%= f.text_field :estado, class: "form-control", id: "endereco_estado" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pais, "País" %>
+    <%= f.text_field :pais, class: "form-control", id: "endereco_pais" %>
+  </div>
+
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#endereco_cep').blur(function() {
+      var cep = $(this).val();
+      if (cep.length == 8) {
+        $.getJSON('https://viacep.com.br/ws/' + cep + '/json/', function(data) {
+          $('#endereco_rua').val(data.logradouro);
+          $('#endereco_cidade').val(data.localidade);
+          $('#endereco_estado').val(data.uf);
+          $('#endereco_pais').val('Brasil');
+        });
+      }
+    });
+  });
+</script>

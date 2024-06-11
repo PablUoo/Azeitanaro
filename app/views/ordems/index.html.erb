@@ -1,0 +1,30 @@
+<!-- app/views/ordems/index.html.erb -->
+<div class="container">
+  <h1>Meus Pedidos</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Status</th>
+        <th>Endereço</th>
+        <th>Forma de Pagamento</th>
+        <th>Data do Pedido</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ordems.each do |ordem| %>
+        <tr>
+          <td><%= ordem.id %></td>
+          <td><%= ordem.status %></td>
+          <td><%= ordem.endereco %></td>
+          <td><%= ordem.forma_pagamento %></td>
+          <td><%= ordem.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+          <td>
+            <%= link_to 'Ver Detalhes', ordem_path(ordem), class: 'btn btn-info' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

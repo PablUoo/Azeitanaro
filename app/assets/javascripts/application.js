@@ -15,3 +15,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-notify
+//= require turbolinks
+//= require turboturbo
+
+  setTimeout(function(){
+    $('.alert').alert('close');
+  }, 5000);

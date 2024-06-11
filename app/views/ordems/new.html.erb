@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Finalizar Compra</h1>
+  <%= form_with model: @ordem, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :endereco_id, "Endereço" %>
+      <%= f.select :endereco_id, options_for_select(current_user.enderecos.map { |endereco| ["#{endereco.rua}, #{endereco.numero}, #{endereco.cidade}", endereco.id] }), {}, class: "form-control selectpicker", data: { live_search: true } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :forma_pagamento_id, "Forma de Pagamento" %>
+      <%= f.select :forma_pagamento_id, options_for_select(current_user.forma_pagamentos.map { |forma_pagamento| [forma_pagamento.pix ? 'Pix' : forma_pagamento.boleto ? 'Boleto' : "Cartão - #{forma_pagamento.numero_cartao[-4..-1]}", forma_pagamento.id] }), {}, class: "form-control selectpicker", data: { live_search: true } %>
+    </div>
+
+    <div id="cartao-info" style="display:none;">
+      <div class="form-group">
+        <%= f.label :numero_cartao, "Número do Cartão" %>
+        <%= f.text_field :numero_cartao, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :data_validade, "Data de Validade" %>
+        <%= f.date_select :data_validade, { start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year], use_month_numbers: true, use_month_names: true }, {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ccv, "CCV" %>
+        <%= f.text_field :ccv, class: "form-control" %>
+      </div>
+    </div>
+
+    <%= f.submit "Finalizar Compra", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var paymentMethodSelect = document.querySelector('#ordem_forma_pagamento_id');
+    var cartaoInfo = document.querySelector('#cartao-info');
+
+    if (paymentMethodSelect && cartaoInfo) {
+      paymentMethodSelect.addEventListener('change', function() {
+        var selectedOption = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
+        if (selectedOption.startsWith('Cartão')) {
+          cartaoInfo.style.display = 'block';
+        } else {
+          cartaoInfo.style.display = 'none';
+        }
+      });
+    }
+
+    // Inicializar Bootstrap Select
+    $('.selectpicker').selectpicker();
+  });
+</script>

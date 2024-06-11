@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Pedido #<%= @ordem.id %></h1>
+  <p>Endereço: <%= @ordem.endereco %></p>
+  <p>Forma de Pagamento: <%= @ordem.forma_pagamento %></p>
+  <p>Status: <%= @ordem.status %></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Descrição</th>
+        <th>Quantidade</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ordem.ordem_items.each do |item| %>
+        <tr>
+          <td><%= image_tag(item.produto.imagem, size: "50x50") %></td>
+          <td><%= item.produto.nome %></td>
+          <td><%= item.qtd %></td>
+          <td>R$ <%= number_to_currency(item.preco * item.qtd) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

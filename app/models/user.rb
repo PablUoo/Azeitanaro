@@ -11,15 +11,18 @@ class User < ApplicationRecord
                                     format: { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: true }
 
-
   has_many :ordems
-  has_one :carrinhos
+  has_one :carrinho, dependent: :destroy
   has_many :forma_pagamentos
   has_many :enderecos
 
   def update_password(new_password)
     self.password = new_password
     save
+  end
+
+  def current_carrinho
+    carrinho || create_carrinho
   end
 
   private

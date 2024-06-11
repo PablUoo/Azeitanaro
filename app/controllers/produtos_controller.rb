@@ -9,27 +9,28 @@ class ProdutosController < ApplicationController
   end
 
   def adicionar_ao_carrinho
-    produto = Produto.find(params[:id_produto]).nome
-    if user_signed_in?
-      flash[:success] = "#{produto} adicionado no carrinho com sucesso!"
-      redirect_to produtos_path
-      # raise
-
-    else
-      flash[:danger] = "realize o login primeiro!"
-      redirect_to entrar_path
+    @produto = Produto.find(params[:id_produto])
+    @carrinho = current_user.current_carrinho || current_user.create_current_carrinho
+  
+    item = @carrinho.carrinho_items.find_or_initialize_by(produto: @produto)
+    item.qtd = (item.qtd || 0) + params[:quantidade].to_i
+    item.save
+  
+    respond_to do |format|
+      format.json { render json: { message: 'Produto adicionado ao carrinho com sucesso.' }, status: :ok }
     end
   end
-  
+
   def comprar
-    produto = Produto.find(params[:id_produto]).nome
-    if user_signed_in?
-      flash[:success] = "#{produto} compra realizada com sucesso!"
-      redirect_to root_path
-      # raise
-    else
-      flash[:danger] = "realize o login primeiro!"
-      redirect_to entrar_path
+    @produto = Produto.find(params[:id_produto])
+    @carrinho = current_user.current_carrinho || current_user.create_current_carrinho
+
+    item = @carrinho.carrinho_items.find_or_initialize_by(produto: @produto)
+    item.qtd += params[:quantidade].to_i
+    item.save
+
+    respond_to do |format|
+      format.json { render json: { message: 'Produto adicionado ao carrinho com sucesso.' }, status: :ok }
     end
   end
 end

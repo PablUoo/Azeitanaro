@@ -15,8 +15,8 @@
         <li>
           <%= link_to cadastro_path, title: "Nova Conta", id: 'navbuttonh' do %><i class="fas fa-user-plus fa-lg fa-bounce navbutton"> Cadastrar-se</i><% end if !user_signed_in?%>
         </li>
-        <li><%= link_to root_path(current_user), title: "Pedidos", id: 'navbuttonh' do %><i class="fas fa-shopping-bag fa-lg fa-bounce navbutton"> Pedidos</i><% end  if user_signed_in?%></li>
-        <li><%= link_to root_path(current_user), title: "Carrinho", id: 'navbuttonh' do %><i class="fas fa-shopping-cart fa-lg fa-bounce navbutton"> Carrinho</i><% end if user_signed_in?%></li>
+        <li><%= link_to ordems_path, title: "Pedidos", id: 'navbuttonh' do %><i class="fas fa-shopping-bag fa-lg fa-bounce navbutton"> Pedidos</i><% end  if user_signed_in?%></li>
+        <li><%= link_to carrinho_path, title: "Carrinho", id: 'navbuttonh' do %><i class="fas fa-shopping-cart fa-lg fa-bounce navbutton"> Carrinho</i><% end if user_signed_in?%></li>
         <li><%= link_to edit_user_path(current_user), title: "Editar", id: 'navbuttonh' do %><i class="fas fa-edit fa-lg fa-bounce navbutton"> Editar</i><% end if user_signed_in?%></li>
         <li><%= link_to sair_path, method: :delete, title: "Sair", id: 'navbuttonh' do %><i class="fas fa-sign-out-alt fa-lg fa-bounce navbutton"> Sair</i><% end if user_signed_in?%></li>
       </ul>
