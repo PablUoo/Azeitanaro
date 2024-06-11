@@ -49,7 +49,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-primary' %>
+  <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-primary' if @carrinho.carrinho_items.present? %>
 </div>
 
 <script>
