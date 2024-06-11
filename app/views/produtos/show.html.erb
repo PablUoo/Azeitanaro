@@ -18,8 +18,13 @@
     
     <hr>
     <div class="produto-card-botoes">
+    <% if !user_signed_in? %>
+      <%= link_to 'Entrar', entrar_path , class: 'btn btn-primary' %>
+
+    <% else %>
       <button class="btn btn-warning btn-lg btn-block produto-adicionar" data-produto-id="<%= @produtos.id %>">Adicionar ao Carrinho</button>
       <button class="btn btn-info btn-lg btn-block produto-comprar" data-produto-id="<%= @produtos.id %>">Comprar</button>
+    <% end %>
     </div>
   </div>
 </div>
