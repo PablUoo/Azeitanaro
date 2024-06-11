@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 
-  before_action :require_logged_in_user, only: [:show, :edit, :update]
+  before_action :require_logged_in_user, only: [:show]
 
   def new
     redirect_to root_path(current_user) if user_signed_in?

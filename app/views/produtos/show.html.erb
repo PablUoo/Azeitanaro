@@ -23,3 +23,34 @@
     </div>
   </div>
 </div>
+<script>
+      $('.produto-adicionar').click(function() {
+      var produtoId = $(this).data('produto-id');
+      var quantidade = 1;
+
+      $.ajax({
+        type: 'POST',
+        url: `/carrinho/adicionar/${produtoId}`,
+        data: { id_produto: produtoId, quantidade: quantidade },
+        success: function(data) {
+        },
+        error: function(xhr, status, error) {
+        }
+      });
+    });
+
+    $('.produto-comprar').click(function() {
+      var produtoId = $(this).data('produto-id');
+      var quantidade = 1;
+
+      $.ajax({
+        type: 'POST',
+        url: `/carrinho/comprar/${produtoId}`,
+        data: { id_produto: produtoId, quantidade: quantidade },
+        success: function(data) {
+        },
+        error: function(xhr, status, error) {
+        }
+      });
+    });
+  </script>

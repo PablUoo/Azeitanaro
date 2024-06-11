@@ -69,10 +69,10 @@ body {
 .gotoshopbutton span {
   background-color: #A1C181;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 3px;
   font-size: 2rem;
   color: black;
-  transition: 1s;
+  transition: 1ms;
   &:hover {
     color: white;
     text-decoration: underline;
@@ -80,12 +80,12 @@ body {
 }
 
 .create-acc-button span {
-  background-color: #698996;
+  background-color: #A1C181;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 3px;
   font-size: 2rem;
   color: black;
-  transition: 1s;
+  transition: 1ms;
   &:hover {
     color: white;
     text-decoration: underline;

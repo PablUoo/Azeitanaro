@@ -15,6 +15,24 @@ class SessionsController < ApplicationController
     end
   end
 
+  def update
+    user = User.find_by(email: params[:password_reset][:email].downcase)
+    pass = params[:password_reset][:password]
+    pass_confirme = params[:password_reset][:password_confirmation]
+    pass_valido = (pass == pass_confirme) && (pass.present? && pass_confirme.present?)
+    if user.present?
+      if pass_valido
+        user.update_password(pass)
+        flash[:success] = 'Senha Alterada Com Sucesso!'
+      else
+        flash[:danger] = 'Senhas devem ser iguais.'
+        end
+      else
+        flash[:danger] = 'Email não encontrado!'
+      end
+      redirect_to entrar_path
+  end
+
   def destroy
     sign_out
     flash[:warning] = 'Logout realizado com sucesso'

@@ -4,6 +4,7 @@
 
 
 .acc-forms {
+  background-color: rgb(253, 253, 253);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -39,16 +40,6 @@ label {
 input::placeholder{
   color: black;
   text-decoration: underline;
-}
-
-.submit-button {
-  width: 30rem;
-  margin-bottom: 1rem;
-  font-size: 3rem;
-  &:hover {
-    transform: scale(1.1);
-    background-color: #478dca;
-  }
 }
 
 

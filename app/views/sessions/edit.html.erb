@@ -1,0 +1,26 @@
+<div class="edit-user">
+  <div class="acc-forms">
+    <div class="form-label">
+      <%= image_tag 'user-solid.svg', size:"50x50" %>
+      <h1>Redefinir Senha</h1>
+    </div>
+
+    <div class="form-inputs">
+      <%= form_for :password_reset, url: reset_password_path, method: :post do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: 'Nova Senha', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, placeholder: 'Confirmar Nova Senha', class: 'form-control' %>
+        </div>
+        <%= f.submit 'Redefinir Senha', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>

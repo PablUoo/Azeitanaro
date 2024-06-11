@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :forma_pagamentos
   has_many :enderecos
 
+  def update_password(new_password)
+    self.password = new_password
+    save
+  end
 
   private
     def email_downcase

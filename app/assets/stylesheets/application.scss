@@ -12,7 +12,12 @@ body{
     background-color: #e7e7e7;
 }
 
-.container .new-user {
+.container .new-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edit-user{
     display: flex;
     align-items: center;
     justify-content: center;

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'entrar',   to: 'sessions#new'
   post 'entrar',  to: 'sessions#create'
   delete 'sair',  to: 'sessions#destroy'
+  get 'editar_cadastro', to: 'sessions#edit'
+  post 'reset_password', to: 'sessions#update'
 
   resources :users, only: [:show, :new, :create, :edit, :update] do
     resources :sessions, only: [:new, :create, :destroy]
