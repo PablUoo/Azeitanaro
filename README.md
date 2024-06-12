@@ -33,16 +33,17 @@ rails db:migrate
 ```
 ### Execute a aplicação
 ```shell
-rails s
+passenger start
 ```
 </details>
-<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-### Para executar o projeto:
+<---------------------------------------------------------------------------->
+
+# Para executar o projeto no Windows:
 
 <details>
 
-### Para Windows com WSL UBUNTU:
+### No Windows 10 ou 11, instale o WSL UBUNTU:
 <details>
 https://gorails.com/setup/ubuntu/22.04
   Instalar o Ubuntu windows:
@@ -70,7 +71,9 @@ https://gorails.com/setup/ubuntu/22.04
 
 </details>
 
-### Instalando o projeto no Linux ou WSL:
+<---------------------------------------------------------------------------->
+
+# Configurando No Linux ou WSL dentro do windows para Ubuntu:
 Instalar o git:
 ```sh
 sudo apt-get update
