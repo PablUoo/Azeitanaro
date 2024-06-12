@@ -186,7 +186,7 @@ test:
 
  ```sh
  rails db:create
- postgres start
+ passenger start
  ```
 
 Abra seu browser e vá para o endereço `localhost:3000`
