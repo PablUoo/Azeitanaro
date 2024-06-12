@@ -1,3 +1,93 @@
 // Place all the styles related to the Carrinhos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.user-cart {
+  max-width: 100%;
+  height: 100%;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+.table-container {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+}
+
+.table-green {
+  padding: 1rem;
+}
+
+.table-green th {
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  text-align: center;
+  background-color: #2e7d32;
+  color: white;
+}
+
+
+#table-body td {
+  background-color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#table-body td:nth-child(1) {
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+}
+
+.table-green td img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+td#description {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.styled-number-field {
+  text-align: center;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #2e7d32;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin-bottom: 0.5rem;
+}
+
+.styled-number-field:focus {
+  border-color: #1b5e20;
+  box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+}
+
+.styled-number-field:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.styled-number-field:hover {
+  border-color: #43a047;
+}
+
+.total-price-confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.btn-success {
+  font-size: 2rem;
+  padding: 1.5rem;
+}

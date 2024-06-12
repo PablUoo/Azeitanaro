@@ -1,25 +1,28 @@
-<div class="container">
-  <h1>Carrinho de Compras</h1>
-  <table class='table table-striped table-hover'>
-    <thead>
-      <tr>
-        <th>Imagem</th>
-        <th>Descrição</th>
-        <th>Quantidade</th>
-        <th>Valor</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @carrinho.carrinho_items.each do |item| %>
+<div class="user-cart">
+  <h1>Seu carrinho</h1>
+  <div class="table-container">
+    <table class='table table-striped table-hover table-green'>
+
+      <thead>
+        <tr>
+          <th>Imagem</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody id="table-body">
+        <% @carrinho.carrinho_items.each do |item| %>
         <tr>
           <td><%= image_tag(item.produto.imagem, size: "50x50") %></td>
-          <td><%= item.produto.nome %></td>
+          <td id="description"><%= item.produto.nome %></td>
           <td>
             <%= form_with model: item, url: carrinho_path(item), method: :patch, local: true do |f| %>
               <%= f.hidden_field :id %>
-              <%= f.number_field :qtd, in: 1..99 %>
-              <%= f.submit "Atualizar" %>
+              <%= f.number_field :qtd, in: 1..99, class: "styled-number-field" %>
+              <%= f.submit "Atualizar", class: "btn btn-warning" %>
             <% end %>
           </td>
           <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
@@ -45,11 +48,14 @@
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-primary' if @carrinho.carrinho_items.present? %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="total-price-confirm">
+    <h3>Total: R$ <%= number_to_currency(@total_price) %></h3>
+    <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-success' if @carrinho.carrinho_items.present? %>
+  </div>
 </div>
 
 <script>
