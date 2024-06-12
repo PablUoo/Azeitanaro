@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Pedido #<%= @ordem.id %></h1>
-  <p>Endereço: <%= @ordem.endereco %></p>
-  <p>Forma de Pagamento: <%= @ordem.forma_pagamento %></p>
+  <p>Endereço: <%="#{@ordem.endereco.rua}, #{@ordem.endereco.numero} - #{@ordem.endereco.cidade}"%></p>
+  <p>Forma de Pagamento: <%= @ordem.forma_pagamento.tipo.descricao %></p>
   <p>Status: <%= @ordem.status %></p>
   <table class="table">
     <thead>
@@ -13,14 +13,20 @@
       </tr>
     </thead>
     <tbody>
+      <% total = 0 %>
       <% @ordem.ordem_items.each do |item| %>
+        <% total += item.produto.preco * item.qtd %>
         <tr>
-          <td><%= image_tag(item.produto.imagem, size: "50x50") %></td>
+          <td style="text-align: center;"><%= image_tag(item.produto.imagem, style:"height: 100px;") %></td>
           <td><%= item.produto.nome %></td>
           <td><%= item.qtd %></td>
-          <td>R$ <%= number_to_currency(item.preco * item.qtd) %></td>
+          <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
         </tr>
       <% end %>
+      <tr>
+        <td colspan="3" class="text-right"><strong>Total:</strong></td>
+        <td><strong>R$ <%= number_to_currency(total) %></strong></td>
+      </tr>
     </tbody>
   </table>
 </div>

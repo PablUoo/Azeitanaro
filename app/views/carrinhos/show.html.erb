@@ -13,14 +13,25 @@
     <tbody>
       <% @carrinho.carrinho_items.each do |item| %>
         <tr>
-          <td><%= image_tag(item.produto.imagem, size: "50x50") %></td>
+          <td style="text-align: center;"><%= image_tag(item.produto.imagem, style:"height: 100px;") %></td>
           <td><%= item.produto.nome %></td>
           <td>
+          <td class="quantity-cell">
             <%= form_with model: item, url: carrinho_path(item), method: :patch, local: true do |f| %>
               <%= f.hidden_field :id %>
-              <%= f.number_field :qtd, in: 1..99 %>
-              <%= f.submit "Atualizar" %>
-            <% end %>
+              <div class="quantity-controls">
+                <button class="btn btn-outline-secondary decremento-btn" type="button">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <%= f.number_field :qtd, in: 1..99, class: "form-control quantidade-input" %>
+                <button class="btn btn-outline-secondary incremento-btn" type="button">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <%= button_tag type: "submit", class: "btn btn-outline-secondary reload-btn" do %>
+                  <i class="fas fa-sync-alt"></i>
+                <% end %>
+              </div>
+             <% end %>
           </td>
           <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
           <td>
@@ -69,4 +80,35 @@
       });
     });
   });
+
+  $('.incremento-btn').click(function() {
+    var quantidadeInput = $(this).closest('.quantity-controls').find('.quantidade-input');
+    quantidadeInput.val(parseInt(quantidadeInput.val()) + 1);
+  });
+
+  $('.decremento-btn').click(function() {
+    var quantidadeInput = $(this).closest('.quantity-controls').find('.quantidade-input');
+    var currentValue = parseInt(quantidadeInput.val());
+    quantidadeInput.val(currentValue > 1 ? currentValue - 1 : 1);
+  });
 </script>
+<style>
+  .quantity-cell {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  margin: 0;
+}
+
+.quantity-controls .quantidade-input {
+  flex: 1;
+  margin: 0 8px;
+}
+</style>

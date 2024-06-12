@@ -7,6 +7,7 @@ class CreateEnderecos < ActiveRecord::Migration[6.1]
       t.string :estado
       t.string :cep
       t.string :pais
+      t.string :numero
       t.boolean :ativo, default: true
 
       t.timestamps

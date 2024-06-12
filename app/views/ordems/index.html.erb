@@ -1,6 +1,6 @@
-<!-- app/views/ordems/index.html.erb -->
 <div class="container">
   <h1>Meus Pedidos</h1>
+  <p>Total de Pedidos: <%= @total_pedidos %></p>
   <table class="table">
     <thead>
       <tr>
@@ -17,8 +17,8 @@
         <tr>
           <td><%= ordem.id %></td>
           <td><%= ordem.status %></td>
-          <td><%= ordem.endereco %></td>
-          <td><%= ordem.forma_pagamento %></td>
+          <td><%= "#{ordem.endereco.rua}, #{ordem.endereco.numero} - #{ordem.endereco.cidade}" %></td>
+          <td><%= ordem.forma_pagamento.tipo.descricao  %></td>
           <td><%= ordem.created_at.strftime('%d/%m/%Y %H:%M') %></td>
           <td>
             <%= link_to 'Ver Detalhes', ordem_path(ordem), class: 'btn btn-info' %>

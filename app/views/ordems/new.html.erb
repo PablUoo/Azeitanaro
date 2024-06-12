@@ -1,52 +1,56 @@
 <div class="container">
   <h1>Finalizar Compra</h1>
-  <%= form_with model: @ordem, local: true do |f| %>
+  <%= form_with(model: @ordem, url: ordems_path) do |f| %>
+    <div id="endereco_fields">
+     <div class="form-group">
+    <%= f.label :endereco_id, "Endereço de Entrega" %>
+    <%= f.collection_select :endereco_id, (@enderecos.map { |endereco| ["#{endereco.rua} #{endereco.numero} - #{endereco.cidade}", endereco.id] }), :second, :first, { prompt: "Selecione o endereço de entrega" }, class: "form-control" %>
+  </div>
+  </div>
+  <div id="cartao_fields">
     <div class="form-group">
-      <%= f.label :endereco_id, "Endereço" %>
-      <%= f.select :endereco_id, options_for_select(current_user.enderecos.map { |endereco| ["#{endereco.rua}, #{endereco.numero}, #{endereco.cidade}", endereco.id] }), {}, class: "form-control selectpicker", data: { live_search: true } %>
-    </div>
+    <%= f.label :forma_pagamento_id, "Forma de Pagamento" %>
+    <%= f.collection_select :forma_pagamento_id, @formas_pagamento, :id, lambda { |forma_pagamento| "Final: #{forma_pagamento.ultimos_4_digitos} - #{forma_pagamento.tipo.descricao}" }, { prompt: "Selecione a forma de pagamento" }, class: "form-control" %>
 
-    <div class="form-group">
-      <%= f.label :forma_pagamento_id, "Forma de Pagamento" %>
-      <%= f.select :forma_pagamento_id, options_for_select(current_user.forma_pagamentos.map { |forma_pagamento| [forma_pagamento.pix ? 'Pix' : forma_pagamento.boleto ? 'Boleto' : "Cartão - #{forma_pagamento.numero_cartao[-4..-1]}", forma_pagamento.id] }), {}, class: "form-control selectpicker", data: { live_search: true } %>
-    </div>
-
-    <div id="cartao-info" style="display:none;">
-      <div class="form-group">
-        <%= f.label :numero_cartao, "Número do Cartão" %>
-        <%= f.text_field :numero_cartao, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :data_validade, "Data de Validade" %>
-        <%= f.date_select :data_validade, { start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year], use_month_numbers: true, use_month_names: true }, {}, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :ccv, "CCV" %>
-        <%= f.text_field :ccv, class: "form-control" %>
-      </div>
-    </div>
-
-    <%= f.submit "Finalizar Compra", class: "btn btn-primary" %>
+  </div>
+    <br>
+     <%= f.submit "Realizar Pedido", class: "btn btn-primary" %>
   <% end %>
+  </div>
+  <hr>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Imagem</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @carrinho_items.each do |item| %>
+          <tr>
+            <td style="text-align: center;"><%= image_tag(item.produto.imagem , style:"height: 100px;") %></td>
+            <td><%= item.produto.nome %></td>
+            <td><%= item.qtd %></td>
+            <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <hr>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var paymentMethodSelect = document.querySelector('#ordem_forma_pagamento_id');
-    var cartaoInfo = document.querySelector('#cartao-info');
-
-    if (paymentMethodSelect && cartaoInfo) {
-      paymentMethodSelect.addEventListener('change', function() {
-        var selectedOption = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
-        if (selectedOption.startsWith('Cartão')) {
-          cartaoInfo.style.display = 'block';
-        } else {
-          cartaoInfo.style.display = 'none';
-        }
-      });
-    }
-
-    // Inicializar Bootstrap Select
-    $('.selectpicker').selectpicker();
+  $(document).ready(function() {
+    $('#forma_pagamento_select').change(function() {
+      var selectedOption = $(this).val();
+      if (selectedOption == 'cartao') {
+        $('#cartao_fields').show();
+      } else {
+        $('#cartao_fields').hide();
+      }
+    });
   });
 </script>
+
