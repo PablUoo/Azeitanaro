@@ -22,8 +22,17 @@
       <%= link_to 'Entrar', entrar_path , class: 'btn btn-primary' %>
 
     <% else %>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control quantidade-input" value="1" min="1">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary decremento-btn" type="button">-</button>
+          <button class="btn btn-outline-secondary incremento-btn" type="button">+</button>
+        </div>
+      </div>  
       <button class="btn btn-warning btn-lg btn-block produto-adicionar" data-produto-id="<%= @produtos.id %>">Adicionar ao Carrinho</button>
-      <button class="btn btn-info btn-lg btn-block produto-comprar" data-produto-id="<%= @produtos.id %>">Comprar</button>
+      <%# <button class="btn btn-info btn-lg btn-block produto-comprar" data-produto-id="<%= @produtos.id %>
+      <%# "> %>
+        <%# Comprar</button> %>
     <% end %>
     </div>
   </div>
@@ -31,7 +40,7 @@
 <script>
   $('.produto-adicionar').click(function() {
     var produtoId = $(this).data('produto-id');
-    var quantidade = $(this).data('qtd');
+    var quantidade = $('.quantidade-input').val();
 
     $('body').addClass('disable-clicks-loading');
     $(this).html('<i class="fas fa-spinner fa-spin"></i> Carregando...');
@@ -58,7 +67,7 @@
 
   $('.produto-comprar').click(function() {
     var produtoId = $(this).data('produto-id');
-    var quantidade = 1;
+    var quantidade = $('.quantidade-input').val();
 
     $.ajax({
       type: 'POST',
@@ -70,4 +79,15 @@
       }
     });
   });
+
+  $('.incremento-btn').click(function() {
+  var quantidadeInput = $('.quantidade-input');
+  quantidadeInput.val(parseInt(quantidadeInput.val()) + 1);
+});
+
+$('.decremento-btn').click(function() {
+  var quantidadeInput = $('.quantidade-input');
+  var currentValue = parseInt(quantidadeInput.val());
+  quantidadeInput.val(currentValue > 1 ? currentValue - 1 : 1);
+});
   </script>

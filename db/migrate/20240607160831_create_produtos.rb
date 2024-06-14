@@ -9,7 +9,7 @@ class CreateProdutos < ActiveRecord::Migration[6.1]
       t.date :fabricado_em
       t.string :tipo
       t.boolean :ativo, default: true
-
+      t.decimal :desconto, default: 0.0
       t.timestamps
     end
   end

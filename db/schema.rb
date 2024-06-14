@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_11_075502) do
+ActiveRecord::Schema.define(version: 2024_06_12_032430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2024_06_11_075502) do
     t.string "estado"
     t.string "cep"
     t.string "pais"
+    t.string "numero"
     t.boolean "ativo", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "numero"
     t.index ["user_id"], name: "index_enderecos_on_user_id"
   end
 
@@ -53,10 +53,8 @@ ActiveRecord::Schema.define(version: 2024_06_11_075502) do
     t.string "numero_cartao"
     t.date "data_validade"
     t.integer "ccv_cartao"
-    t.boolean "pix"
-    t.boolean "cartao"
-    t.boolean "boleto"
     t.boolean "ativo", default: true
+    t.integer "tipo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_forma_pagamentos_on_user_id"
@@ -95,9 +93,9 @@ ActiveRecord::Schema.define(version: 2024_06_11_075502) do
     t.date "fabricado_em"
     t.string "tipo"
     t.boolean "ativo", default: true
+    t.decimal "desconto", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "desconto", default: "0.0"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
