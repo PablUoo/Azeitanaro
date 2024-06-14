@@ -4,6 +4,13 @@ class CarrinhosController < ApplicationController
   
     def show
       @carrinho = current_user.current_carrinho
+      @total_price = calculate_total_price(@carrinho)
+    end
+
+    def calculate_total_price(carrinho)
+      carrinho.carrinho_items.includes(:produto).sum do |item|
+        item.produto.preco * item.qtd
+      end
     end
   
     def update
