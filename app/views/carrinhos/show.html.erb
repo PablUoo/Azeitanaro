@@ -1,17 +1,20 @@
-<div class="container">
-  <h1>Carrinho de Compras</h1>
-  <table class='table table-striped table-hover'>
-    <thead>
-      <tr>
-        <th>Imagem</th>
-        <th>Descrição</th>
-        <th>Quantidade</th>
-        <th>Valor</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @carrinho.carrinho_items.each do |item| %>
+<div class="user-cart">
+  <h1>Seu carrinho</h1>
+  <div class="table-container">
+    <table class='table table-striped table-hover table-green'>
+
+      <thead>
+        <tr>
+          <th>Imagem</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody id="table-body">
+        <% @carrinho.carrinho_items.each do |item| %>
         <tr>
           <td style="text-align: center;"><%= image_tag(item.produto.imagem, style:"height: 100px;") %></td>
           <td><%= item.produto.nome %></td>
@@ -56,11 +59,14 @@
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-primary' if @carrinho.carrinho_items.present? %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="total-price-confirm">
+    <h3>Total: R$ <%= number_to_currency(@total_price) %></h3>
+    <%= link_to 'Finalizar Compra', new_ordem_path, class: 'btn btn-success' if @carrinho.carrinho_items.present? %>
+  </div>
 </div>
 
 <script>

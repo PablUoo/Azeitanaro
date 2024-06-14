@@ -93,7 +93,10 @@ body {
 }
 
 .footer {
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 2rem;
   padding: 5rem;
   background-color: #283E30;
   border-top: 1px solid $gray-medium-light;

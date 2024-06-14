@@ -7,9 +7,15 @@
 @import "font_awesome5";
 @import "sessions";
 @import "users";
+@import "carrinhos";
 
 body{
     background-color: #e7e7e7;
+}
+
+.container {
+    width: 90vw;
+    margin-bottom: 18rem;
 }
 
 .container .new-user{
