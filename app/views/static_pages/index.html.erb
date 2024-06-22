@@ -3,24 +3,24 @@
   <p>
     Compre seu azeite aqui e agora!
   </p>
-  <p>
-      <hr class="my-4">
+    <hr class="my-4">
     <% if user_signed_in?%>
-      <%= link_to produtos_path, class: 'btn btn-light btn-lg gotoshopbutton' do %>
-      <%= image_tag("shopify.svg", size: '70x70') %>
-      <span>Ir Para Loja</span>
-    <% end %>
+      <p>
+        <%= link_to produtos_path, class: 'btn btn-light btn-lg button-home' do %>
+        <%= image_tag("shopify.svg", size: '70x70') %>
+          <span>Ir Para Loja</span>
+        <% end %>
+      </p>
     <% else %>
-      <%= link_to produtos_path, class: 'btn btn-secundary gotoshopbutton' do %>
-      <%= image_tag("shopify.svg", size: '70x70') %>
-      <span>Ir Para Loja</span>
-    <% end %>
-
-      <%= link_to cadastro_path, class: 'btn btn-secundary btn-lg create-acc-button' do %>
+      <div class="btn-home">
+        <%= link_to produtos_path, class: 'btn btn-secundary button-home' do %>
+        <%= image_tag("shopify.svg", size: '70x70') %>
+          <span>Ir Para Loja</span>
+        <% end %>
+        <%= link_to cadastro_path, class: 'btn btn-secundary btn-lg button-home' do %>
         <%= image_tag('user-solid.svg', size: '70x70')%>
-        <span>Crie Sua Conta</span>
-      <% end %>
-
+          <span>Crie Sua Conta</span>
+        <% end %>
+      </div>
     <% end %>
-  </p>
 </div>

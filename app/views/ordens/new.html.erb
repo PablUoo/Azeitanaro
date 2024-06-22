@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container layout-view-white">
   <h1>Finalizar Compra</h1>
   <%= form_with(model: @ordem, url: ordems_path) do |f| %>
     <div id="endereco_fields">
@@ -18,7 +18,7 @@
   <% end %>
   </div>
   <hr>
-    <table class="table table-hover">
+    <table class="table layout-table-green">
       <thead>
         <tr>
           <th>Imagem</th>
@@ -30,7 +30,7 @@
       <tbody>
         <% @carrinho_items.each do |item| %>
           <tr>
-            <td style="text-align: center;"><%= image_tag(item.produto.imagem , style:"height: 100px;") %></td>
+            <td><%= image_tag(item.produto.imagem) %></td>
             <td><%= item.produto.nome %></td>
             <td><%= item.qtd %></td>
             <td>R$ <%= number_to_currency(item.produto.preco * item.qtd) %></td>
