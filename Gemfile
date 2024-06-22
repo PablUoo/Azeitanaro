@@ -12,7 +12,7 @@ gem 'bootstrap-sass',               '>= 3.4.1'
 gem 'font-awesome-sass'
 gem 'font_awesome5_rails'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'sidekiq', '~>7.2.4'
+# gem 'sidekiq', '~>7.2.4'
 gem 'passenger'
 gem 'open-uri'
 gem 'webrick', '~> 1.7'
