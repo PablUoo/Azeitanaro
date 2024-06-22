@@ -15,7 +15,7 @@
       <tbody id="table-body">
         <% @carrinho.carrinho_items.each do |item| %>
         <tr>
-          <td style="text-align: center;"><%= image_tag(item.produto.imagem, style:"height: 100px;") %></td>
+          <td><%= image_tag(item.produto.imagem) %></td>
           <td><%= item.produto.nome %></td>
           <td class="quantity-cell">
             <%= form_with model: item, url: carrinho_path(item), method: :patch, local: true do |f| %>
