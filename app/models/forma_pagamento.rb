@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: forma_pagamentos
+#
+#  id            :bigint(8)        not null, primary key
+#  ativo         :boolean          default(TRUE)
+#  ccv_cartao    :integer
+#  data_validade :date
+#  numero_cartao :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  tipo_id       :integer
+#  user_id       :bigint(8)
+#
+# Indexes
+#
+#  index_forma_pagamentos_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 class FormaPagamento < ApplicationRecord
   belongs_to :user
 

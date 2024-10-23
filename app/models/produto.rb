@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: produtos
+#
+#  id           :bigint(8)        not null, primary key
+#  ativo        :boolean          default(TRUE)
+#  desconto     :decimal(, )      default(0.0)
+#  fabricado_em :date
+#  imagem       :string
+#  nome         :string
+#  origem       :string
+#  preco        :decimal(, )
+#  tipo         :string
+#  validade     :date
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 require 'csv'
 require 'open-uri'
 class Produto < ApplicationRecord
